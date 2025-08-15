@@ -5,7 +5,7 @@ A simple Zsh script that automatically checks for outdated Homebrew packages and
 ## Features
 
 - **Automatic Daily Checks:** A cron job runs in the background to check for updates.
-- **Terminal Notification:** See a clean list of packages that need upgrading right in your terminal.
+- **Terminal Notification:** Displays a clean, formatted list of packages, showing current and available versions.
 - **Lightweight:** Just a simple shell script, no heavy dependencies.
 
 ## How It Works

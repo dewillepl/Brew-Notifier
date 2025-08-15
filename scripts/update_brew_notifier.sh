@@ -18,8 +18,12 @@ $BREW_PATH update > /dev/null 2>&1
 echo "[BREW NOTIFIER] Done."
 
 
-echo "[BREW NOTIFIER] Step 2/2: Checking for outdated packages (brew outdated)..."
-$BREW_PATH outdated > "$OUTDATED_FILE"
+echo "[BREW NOTIFIER] Step 2/2: Checking for outdated packages and formatting..."
+# Format the output: remove parentheses and color the new version blue.
+# We use --verbose to get version numbers from brew outdated.
+BLUE=$(tput setaf 4)
+RESET=$(tput sgr0)
+$BREW_PATH outdated --verbose | tr -d '()' | sed "s/\([^ ]*$\)/$BLUE&$RESET/" > "$OUTDATED_FILE"
 echo "[BREW NOTIFIER] Done."
 
 if [ -s "$OUTDATED_FILE" ]; then
